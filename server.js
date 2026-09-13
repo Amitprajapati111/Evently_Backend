@@ -12,6 +12,14 @@ const allowedOrigins = process.env.FRONTEND_URL?.split(",").map((origin) => orig
 app.use(cors({ origin: allowedOrigins?.length ? allowedOrigins : true }));
 app.use(express.json({ limit: "100kb" }));
 
+
+app.get("/", (req, res) => {
+  res.json({
+    success: true,
+    message: "Evently API is running 🚀"
+  });
+});
+
 app.get("/api/health", (req, res) => {
   res.json({ success: true, message: "Evently API is running" });
 });
